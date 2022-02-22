@@ -5,6 +5,6 @@ WORKDIR /app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
-COPY Lyra.jar Lyra.jar
+COPY Luna.jar Luna.jar
 
-ENTRYPOINT ["/bin/sh", "-c", "java -jar Lyra.jar"]
+ENTRYPOINT ["/bin/sh", "-c", "java -jar Luna.jar"]
