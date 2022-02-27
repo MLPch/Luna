@@ -1,6 +1,7 @@
 package horse.boo.bot.events;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -20,6 +21,13 @@ public class SlashCommand extends ListenerAdapter {
         eb.addField("Please, choose only those languages that you have mastered at the junior+ level.",
                 "", true);
         eb.setColor(Color.BLUE);
+
+        EmbedBuilder eb1 = new EmbedBuilder();
+        eb1.setTitle("На случай аварийного чебурнета, запускаем не менее кривой аварийный чатик.");
+        eb1.addField("Клиент скачать тут: https://rocket.chat/install" + "\nIP для подключения: http://195.234.208.9:3000/",
+                "", true);
+        eb1.setColor(Color.BLUE);
+
         EmbedBuilder ebb = new EmbedBuilder();
         ebb.setTitle("Choose your direction.");
         ebb.addField("Please select the areas in which you are developing.",
@@ -64,12 +72,19 @@ public class SlashCommand extends ListenerAdapter {
                             Button.secondary("1014", "Web designer (UI/UX)"),
                             Button.secondary("1015", "System Administrator"))
             ).queue();
+            event.getChannel().sendMessage(" ").setEmbeds(eb1.build()).setActionRow(
+                    Button.link("https://rocket.chat/install", Emoji.fromMarkdown("<:rocket:947621474557116416>"))
+            ).queue();
+//        } else if (event.getMessage().getContentRaw().equals("/Cheburnet") &&
+//                event.getMessage().getAuthor().getIdLong() == 320332718921482241L) {
+//            event.getChannel().sendMessage("@here").setEmbeds(eb1.build()).setActionRow(
+//                    Button.link("https://rocket.chat/install", Emoji.fromMarkdown("<:rocket:947621474557116416>"))
+//            ).queue();
         }
     }
 
     @Override
-    public void onButtonClick(@NotNull ButtonClickEvent event)
-    {
+    public void onButtonClick(@NotNull ButtonClickEvent event) {
         if (event.getComponentId().equals(Objects.requireNonNull(event.getButton()).getId()) &&
                 !(Objects.requireNonNull(event.getMember()).getRoles().contains(Objects.requireNonNull(
                         event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0))))
@@ -77,8 +92,7 @@ public class SlashCommand extends ListenerAdapter {
             Objects.requireNonNull(event.getGuild()).addRoleToMember(Objects.requireNonNull(event.getMember()),
                     event.getGuild().getRolesByName(event.getButton().getLabel(), true).get(0)).queue();
             event.reply("Welcome to the " + event.getButton().getLabel()).setEphemeral(true).queue();
-        }
-        else if (event.getComponentId().equals(Objects.requireNonNull(event.getButton()).getId()) &&
+        } else if (event.getComponentId().equals(Objects.requireNonNull(event.getButton()).getId()) &&
                 (Objects.requireNonNull(event.getMember()).getRoles().contains(Objects.requireNonNull(
                         event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0))))
         {
