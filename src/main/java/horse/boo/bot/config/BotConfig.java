@@ -19,7 +19,7 @@ import java.util.List;
 import static net.dv8tion.jda.api.requests.GatewayIntent.*;
 
 @Configuration
-@PropertySource("classpath:princess.properties")
+@PropertySource("classpath:test.properties")
 public class BotConfig {
 
     @Value("${bot.token}")
@@ -53,6 +53,7 @@ public class BotConfig {
         jda.addEventListeners(removeReactionOnPostEvent());                 // Подписка на ивент (исполнитель)
         jda.addEventListeners(helpEvent());                                 // Правила использования подписки на ивент
         jda.addEventListeners(slashCommand());
+        jda.addEventListeners(badWordsCollectorEvent());
 
 
         return jda.build();
@@ -98,9 +99,14 @@ public class BotConfig {
         return new SlashCommand();
     }
 
+    @Bean
+    public BadWordsCollectorEvent badWordsCollectorEvent() {
+        return new BadWordsCollectorEvent();
+    }
+
 
     @Configuration
-    @PropertySource("classpath:princess.properties")
+    @PropertySource("classpath:test.properties")
     public class BotConfig2 {
 
         @Value("${bot.token2}")
@@ -124,7 +130,7 @@ public class BotConfig {
             jda2.disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE);
             jda2.setBulkDeleteSplittingEnabled(false);
             jda2.setCompression(Compression.NONE);
-            jda2.setActivity(Activity.listening("to your troubles."));        // Активность бота
+            jda2.setActivity(Activity.listening("your troubles."));        // Активность бота
             jda2.setEnabledIntents(intents);
             jda2.addEventListeners(memberJoinEvent());                           // Оповещение о новом участнике
 
