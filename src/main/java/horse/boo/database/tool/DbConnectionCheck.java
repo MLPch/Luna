@@ -1,8 +1,8 @@
-package tool;
+package horse.boo.database.tool;
 
-import config.SqlDatasourceConfig;
-import model.Pony;
-import repository.PonyRepository;
+import horse.boo.database.config.SqlDatasourceConfig;
+import horse.boo.database.model.Pony;
+import horse.boo.database.repository.PonyRepository;
 
 import java.util.List;
 

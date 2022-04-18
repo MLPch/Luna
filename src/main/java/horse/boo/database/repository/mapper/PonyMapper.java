@@ -1,7 +1,7 @@
-package repository.mapper;
+package horse.boo.database.repository.mapper;
 
-import jooq.model.tables.Ponies;
-import model.Pony;
+import horse.boo.database.jooq.model.tables.Ponies;
+import horse.boo.database.model.Pony;
 import org.jooq.Record;
 
 public class PonyMapper {
