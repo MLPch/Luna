@@ -17,7 +17,6 @@ public class DbConnection {
                 SqlDatasourceConfig.USER,
                 SqlDatasourceConfig.PASSWORD);
     }
-    // comment
     public DSLContext getContext(Connection connection) {
         return DSL.using(connection, SqlDatasourceConfig.DIALECT);
     }
