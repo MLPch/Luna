@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class PonyRepositoryImpl implements PonyRepository {
     private static final Logger log = LoggerFactory.getLogger(PonyRepositoryImpl.class);
 
-    private DbConnection dbConnection;
+    private final DbConnection dbConnection;
 
     public PonyRepositoryImpl(DbConnection dbConnection) {
         this.dbConnection = dbConnection;
@@ -50,13 +50,17 @@ public class PonyRepositoryImpl implements PonyRepository {
 
     @Override
     public void addNextLineInBase(Integer id, String name, Integer age) {
-        DataSource dataSource = DatasourceConfig.createDataSource();
-        DSL.using(dataSource, SQLDialect.POSTGRES)
-                .insertInto(Ponies.PONIES)
+        try (var connection = dbConnection.getConnection()) {
+            DSLContext ctxt = dbConnection.getContext(connection);
+//        DataSource dataSource = DatasourceConfig.createDataSource();
+        ctxt.insertInto(Ponies.PONIES)
                 .set(Ponies.PONIES.PONIES_ID, id)
                 .set(Ponies.PONIES.PONIES_NAME, name)
                 .set(Ponies.PONIES.PONIES_AGE, age)
                 .execute();
+        } catch (SQLException ex) {
+            log.error("Something went wrong", ex);
+        }
     }
 
     @Override

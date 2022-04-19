@@ -1,10 +1,13 @@
 package horse.boo.bot.events;
 
 import horse.boo.database.config.SqlDatasourceConfig;
+import horse.boo.database.model.Pony;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import horse.boo.database.repository.PonyRepository;
+
+import java.util.Optional;
 
 public class BadWordsCollectorEvent extends ListenerAdapter {
     @Override
@@ -22,13 +25,14 @@ public class BadWordsCollectorEvent extends ListenerAdapter {
 //
 //
             PonyRepository repository = SqlDatasourceConfig.ponyRepository();
-            repository.addNextLineInBase(8, "jiha", 325);
+            repository.addNextLineInBase(repository.findAll().size() + 1, "Miga", 21);
 //            List<Pony> ponies = repository.findAll();
 //            ponies.forEach(System.out::println);
 //
-//            Optional<Pony> pony = repository.findById("5");
-//            System.out.println(pony);
+            Optional<Pony> pony = repository.findById("33");
+            System.out.println(pony.toString());
             event.getChannel().sendMessage(repository.findAll().toString()).complete();
+            event.getChannel().sendMessage(pony.toString()).complete();
         }
 
     }
