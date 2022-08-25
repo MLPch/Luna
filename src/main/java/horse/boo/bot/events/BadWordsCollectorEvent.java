@@ -25,7 +25,7 @@ public class BadWordsCollectorEvent extends ListenerAdapter {
 //
 //
             PonyRepository repository = SqlDatasourceConfig.ponyRepository();
-            repository.addNextLineInBase(repository.findAll().size() + 1, "Miga", 21);
+            repository.addNextLineInBase(repository.findAll().size() + 1, "Pony", repository.findAll().size() + 2);
 //            List<Pony> ponies = repository.findAll();
 //            ponies.forEach(System.out::println);
 //
