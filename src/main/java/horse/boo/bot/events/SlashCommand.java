@@ -87,15 +87,13 @@ public class SlashCommand extends ListenerAdapter {
     public void onButtonClick(@NotNull ButtonClickEvent event) {
         if (event.getComponentId().equals(Objects.requireNonNull(event.getButton()).getId()) &&
                 !(Objects.requireNonNull(event.getMember()).getRoles().contains(Objects.requireNonNull(
-                        event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0))))
-        {
+                        event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0)))) {
             Objects.requireNonNull(event.getGuild()).addRoleToMember(Objects.requireNonNull(event.getMember()),
                     event.getGuild().getRolesByName(event.getButton().getLabel(), true).get(0)).queue();
             event.reply("Welcome to the " + event.getButton().getLabel()).setEphemeral(true).queue();
         } else if (event.getComponentId().equals(Objects.requireNonNull(event.getButton()).getId()) &&
                 (Objects.requireNonNull(event.getMember()).getRoles().contains(Objects.requireNonNull(
-                        event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0))))
-        {
+                        event.getGuild()).getRolesByName(event.getButton().getLabel(), true).get(0)))) {
             event.getGuild().removeRoleFromMember(Objects.requireNonNull(event.getMember()),
                     event.getGuild().getRolesByName(event.getButton().getLabel(), true).remove(0)).queue();
             event.reply("Delete " + event.getButton().getLabel()).setEphemeral(true).queue();
