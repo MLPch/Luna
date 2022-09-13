@@ -1,8 +1,8 @@
-package config;
+package horse.boo.database.config;
 
 import org.jooq.SQLDialect;
-import repository.PonyRepository;
-import repository.PonyRepositoryImpl;
+import horse.boo.database.repository.PonyRepository;
+import horse.boo.database.repository.PonyRepositoryImpl;
 
 public class SqlDatasourceConfig {
     public static final String URL ="jdbc:postgresql://localhost:5432/ponybase";

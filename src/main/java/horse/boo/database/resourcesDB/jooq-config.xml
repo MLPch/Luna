@@ -20,7 +20,7 @@
 
         <target>
             <packageName>model</packageName>
-            <directory>C:\Users\karau\IdeaProjects\SQL_Trainy\src\main\java\jooq</directory>
+            <directory>C:\Users\karau\IdeaProjects\DiscordBots\Servers\IT.Pony()\Luna\src\main\java\horse\boo\database\jooq</directory>
         </target>
     </generator>
 </configuration>

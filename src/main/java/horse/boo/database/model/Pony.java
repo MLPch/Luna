@@ -1,4 +1,4 @@
-package model;
+package horse.boo.database.model;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package config;
+package horse.boo.database.config;
 
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
