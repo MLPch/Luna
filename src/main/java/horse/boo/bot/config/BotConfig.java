@@ -19,7 +19,7 @@ import java.util.List;
 import static net.dv8tion.jda.api.requests.GatewayIntent.*;
 
 @Configuration
-@PropertySource("classpath:test.properties")
+@PropertySource("classpath:princess.properties")
 public class BotConfig {
 
     @Value("${bot.token}")
@@ -106,7 +106,7 @@ public class BotConfig {
 
 
     @Configuration
-    @PropertySource("classpath:test.properties")
+    @PropertySource("classpath:princess.properties")
     public class BotConfig2 {
 
         @Value("${bot.token2}")
