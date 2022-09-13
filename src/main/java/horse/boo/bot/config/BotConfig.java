@@ -19,7 +19,7 @@ import java.util.List;
 import static net.dv8tion.jda.api.requests.GatewayIntent.*;
 
 @Configuration
-@PropertySource("classpath:test.properties")
+@PropertySource("classpath:princess.properties")
 public class BotConfig {
 
     @Value("${bot.token}")
@@ -53,6 +53,7 @@ public class BotConfig {
         jda.addEventListeners(removeReactionOnPostEvent());                 // Подписка на ивент (исполнитель)
         jda.addEventListeners(helpEvent());                                 // Правила использования подписки на ивент
         jda.addEventListeners(slashCommand());
+        jda.addEventListeners(badWordsCollectorEvent());
 
 
         return jda.build();
@@ -98,9 +99,14 @@ public class BotConfig {
         return new SlashCommand();
     }
 
+    @Bean
+    public BadWordsCollectorEvent badWordsCollectorEvent() {
+        return new BadWordsCollectorEvent();
+    }
+
 
     @Configuration
-    @PropertySource("classpath:test.properties")
+    @PropertySource("classpath:princess.properties")
     public class BotConfig2 {
 
         @Value("${bot.token2}")
