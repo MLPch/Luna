@@ -53,6 +53,7 @@ public class BotConfig {
         jda.addEventListeners(removeReactionOnPostEvent());                 // Подписка на ивент (исполнитель)
         jda.addEventListeners(helpEvent());                                 // Правила использования подписки на ивент
         jda.addEventListeners(slashCommand());
+        jda.addEventListeners(badWordsCollectorEvent());
 
 
         return jda.build();
@@ -96,6 +97,11 @@ public class BotConfig {
     @Bean
     public SlashCommand slashCommand() {
         return new SlashCommand();
+    }
+
+    @Bean
+    public BadWordsCollectorEvent badWordsCollectorEvent() {
+        return new BadWordsCollectorEvent();
     }
 
 
