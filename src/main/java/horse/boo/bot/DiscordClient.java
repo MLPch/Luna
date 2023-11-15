@@ -2,6 +2,7 @@ package horse.boo.bot;
 
 import horse.boo.bot.services.BotReadyService;
 import horse.boo.bot.services.MemberLeaveService;
+import horse.boo.bot.services.RoleSelectService;
 import horse.boo.bot.services.slashcommands.*;
 import horse.boo.bot.services.slashcommands.functionals.DiceRollerService;
 import horse.boo.bot.services.slashcommands.functionals.UnrelatedDeleteService;
@@ -29,6 +30,7 @@ public class DiscordClient implements CommandLineRunner {
     private final UnrelatedDeleteService unrelatedDeleteService;
     private final FunctionalSwitcher functionalSwitcher;
     private final MemberLeaveService memberLeaveService;
+    private final RoleSelectService roleSelectService;
     private final DiceRollerService diceRollerService;
     private final BotReadyService botReadyService;
     private final SettingsService settingsService;
@@ -43,6 +45,7 @@ public class DiscordClient implements CommandLineRunner {
             UnrelatedDeleteService unrelatedDeleteService,
             FunctionalSwitcher functionalSwitcher,
             MemberLeaveService memberLeaveService,
+            RoleSelectService roleSelectService,
             DiceRollerService diceRollerService,
             BotReadyService botReadyService,
             SettingsService settingsService,
@@ -53,6 +56,7 @@ public class DiscordClient implements CommandLineRunner {
         this.unrelatedDeleteService = unrelatedDeleteService;
         this.functionalSwitcher = functionalSwitcher;
         this.memberLeaveService = memberLeaveService;
+        this.roleSelectService = roleSelectService;
         this.diceRollerService = diceRollerService;
         this.botReadyService = botReadyService;
         this.settingsService = settingsService;
@@ -78,6 +82,7 @@ public class DiscordClient implements CommandLineRunner {
                 unrelatedDeleteService,                 // Deleting unreleased content by users
                 functionalSwitcher,                     // Disabling the slash deletion functionality
                 memberLeaveService,                     // Notification of a participant's departure
+                roleSelectService,
                 diceRollerService,                      // Slash dice functionality
                 botReadyService,                        // Notification of bot launch
                 settingsService,                        // Setup config
